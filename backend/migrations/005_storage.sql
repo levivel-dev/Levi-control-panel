@@ -1,0 +1,3 @@
+ALTER TABLE files
+  ADD COLUMN IF NOT EXISTS storage_provider TEXT NOT NULL DEFAULT 'local',
+  ADD COLUMN IF NOT EXISTS storage_bucket TEXT;
