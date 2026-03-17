@@ -18,7 +18,7 @@ const storage = require('./storage');
 const app = express();
 
 app.use(cors({
-  origin: config.corsOrigin
+  origin: 'https://levi-control-panel.vercel.app'
 }));
 app.use(express.json({ limit: '5mb' }));
 
@@ -30,6 +30,9 @@ app.use((req, res, next) => {
 if (storage.getProvider() === 'local') {
   app.use('/uploads', express.static(storage.getLocalDir()));
 }
+app.use('/api/test', (req, res) => {
+  res.json({ message: "API working" });
+});
 
 app.use('/api', healthRoutes);
 app.use('/api/auth', authRoutes);

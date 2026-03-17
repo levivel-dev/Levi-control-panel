@@ -10,6 +10,7 @@ import AnalyticsPage from './pages/Analytics/AnalyticsPage';
 import UsersPage from './pages/Users/UsersPage';
 import SettingsPage from './pages/Settings/SettingsPage';
 import LoginPage from './pages/Auth/LoginPage';
+import { useEffect } from "react";
 
 const ProtectedShell = () => (
   <ProtectedRoute>
@@ -42,6 +43,24 @@ const App = () => {
       <Route path="/*" element={<ProtectedShell />} />
     </Routes>
   );
+  
 };
+function TestAPIComponent() {
+
+  useEffect(() => {
+    fetch("https://levi-control-panel-api.onrender.com/api/test")
+      .then(res => res.json())
+      .then(data => console.log(data))  // Check console to see the response
+      .catch(err => console.error(err));
+  }, []);  // Empty dependency array → runs only once when component mounts
+
+  return (
+    <div>
+      <h1>Testing API Connection</h1>
+      <p>Check your console for results!</p>
+    </div>
+  );
+}
+
 
 export default App;

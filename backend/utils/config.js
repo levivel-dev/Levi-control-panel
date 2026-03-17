@@ -1,14 +1,25 @@
-const path = require('path');
+﻿const path = require('path');
 
 require('dotenv').config({
   path: process.env.DOTENV_PATH || path.join(__dirname, '..', '.env')
 });
 
+const normalizeOrigins = (value) => {
+  if (!value || value === '*') {
+    return '*';
+  }
+
+  return value
+    .split(',')
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+};
+
 const config = {
   env: process.env.NODE_ENV || 'development',
   appName: process.env.APP_NAME || 'Levi Developer Control Panel',
   port: Number(process.env.PORT || 4000),
-  corsOrigin: process.env.CORS_ORIGIN || '*',
+  corsOrigin: normalizeOrigins(process.env.CORS_ORIGIN),
   publicBaseUrl: process.env.PUBLIC_BASE_URL || 'http://localhost:4000',
   pg: {
     connectionString: process.env.DATABASE_URL || ''

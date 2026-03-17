@@ -16,7 +16,7 @@ This guide deploys the dashboard as a PWA and connects the backend API + databas
 5. Add environment variables:
 - `DATABASE_URL`
 - `JWT_SECRET`
-- `CORS_ORIGIN` (your Vercel frontend URL)
+- `CORS_ORIGIN` (use `http://localhost:5173,https://levi-control-panel.vercel.app`)
 - `PUBLIC_BASE_URL` (your Render backend URL)
 - `REDIS_URL` (optional, for queues)
 - `API_MONITOR_ENABLED` (optional)
@@ -35,7 +35,7 @@ This guide deploys the dashboard as a PWA and connects the backend API + databas
 3. Build command: `npm run build`.
 4. Output directory: `dist`.
 5. Add environment variable:
-- `VITE_API_BASE_URL` = your Render backend URL.
+- `VITE_API_BASE_URL` = `https://levi-control-panel-api.onrender.com`.
 6. Deploy and verify the dashboard loads.
 
 ## 4) Enable PWA Install
